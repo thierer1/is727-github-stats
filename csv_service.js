@@ -61,6 +61,8 @@ CSVService.prototype.generateCSV = function (header, arr, getter) {
 CSVService.prototype.saveCSV = function (filename, header, arr, getter) {
     var deferred = Promise.pending();
 
+    console.log('saving "' + filename + '"...');
+
     this.generateCSV(header, arr, getter).then(function (csv) {
         fs.writeFile(filename, csv, function (err) {
             if (err) {
